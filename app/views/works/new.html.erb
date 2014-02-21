@@ -1,0 +1,18 @@
+<h1>Registrar trabajo/evaluacion</h1>
+<%= form_for :work do |f| %>
+  <p>
+    <%= f.label :name, 'Nombre' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :nota_total %>
+    <%= f.text_field :nota_total %>
+  </p>
+  <p>
+    <%= f.label :created_at, 'Fecha' %>
+    <%= f.date_select :created_at %>
+  </p>
+  <p>
+    <%= f.submit 'Registrar' %>
+  </p>
+<% end %>

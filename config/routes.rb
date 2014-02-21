@@ -4,6 +4,7 @@ Miniproyecto::Application.routes.draw do
   get 'signup' => 'users#new', :as => :signup
   get 'logout' => 'sessions#destroy', :as => :logout
   get 'login' => 'sessions#new', :as => :login
+  get 'works/new' => 'works#new'
   resources :sessions
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

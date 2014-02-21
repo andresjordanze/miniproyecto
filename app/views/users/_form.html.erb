@@ -1,19 +1,19 @@
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :username, "Nombre de usuario" %><br />
+    <%= f.label :username, 'Nombre de usuario' %>
     <%= f.text_field :username %>
   </p>
   <p>
-    <%= f.label :email, "Email" %><br />
+    <%= f.label :email, 'Email' %>
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :password %><br />
+    <%= f.label :password, 'Contraseña'%>
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
+    <%= f.label :password_confirmation, 'Confirme Contraseña' %>
     <%= f.password_field :password_confirmation %>
   </p>
   <p><%= f.submit (@user.new_record? ? "Registrarse" : "Update") %></p>
