@@ -1,3 +1,4 @@
+<body>
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
     <div class="col-xs-3">
@@ -16,3 +17,4 @@
       <p><%= f.submit (@user.new_record? ? 'Registrarse' : 'Update'), :class => 'btn btn-lg btn-success' %></p>
     </div>
 <% end %>
+</body>

@@ -16,4 +16,20 @@ class WorksController < ApplicationController
   def show
   		@work = Work.find(params[:id])
 	end
+
+  def edit
+    @work = Work.find(params[:id])
+  end
+
+  def update
+  @work = Work.find(params[:id])
+ 
+    if @work.update(params[:work].permit(:name, :nota_total, :created_at))
+      redirect_to @work
+    else
+      render 'edit'
+    end
+  end
+
+
 end

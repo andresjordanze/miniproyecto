@@ -14,7 +14,8 @@
   <%end%>
   </tr><tr>
   <% @works.each do |work| %>
-    <td class="warning"><%= work.created_at.strftime("%d/%m/%Y")%><%= link_to ' Revisiones', :controller => :works, :action => "index" %></td>
+    <td class="warning"><%= work.created_at.strftime("%d/%m/%Y")%><br><%= link_to 'Presentaciones', :controller => :works, :action => "index" %></td>
   <%end%>
 </tr>
 </table>
+<%= link_to 'Registrar trabajo/evaluacion', new_work_path %>
