@@ -1,0 +1,20 @@
+<h1>Trabajos/evaluaciones</h1>
+<table class="table table-bordered">
+  <tr>
+  <% @works.each do |work| %>
+    <th class="success"><%= work.name %></th>
+  <%end%>
+  </tr><tr>
+  <% @works.each do |work| %>
+    <th class="success"><%= work.nota_total %></th>
+  <%end%>
+  </tr><tr>
+  <% @works.each do |work| %>
+    <td class="active"><%= work.nota %>0</td>
+  <%end%>
+  </tr><tr>
+  <% @works.each do |work| %>
+    <td class="warning"><%= work.created_at.strftime("%d/%m/%Y")%><%= link_to ' Revisiones', :controller => :works, :action => "index" %></td>
+  <%end%>
+</tr>
+</table>

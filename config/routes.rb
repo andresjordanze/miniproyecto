@@ -4,7 +4,7 @@ Miniproyecto::Application.routes.draw do
   get 'signup' => 'users#new', :as => :signup
   get 'logout' => 'sessions#destroy', :as => :logout
   get 'login' => 'sessions#new', :as => :login
-  get 'works/new' => 'works#new'
+  resources :works
   resources :sessions
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,7 +15,6 @@ Miniproyecto::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

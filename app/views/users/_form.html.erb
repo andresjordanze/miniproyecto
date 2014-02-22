@@ -1,20 +1,18 @@
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :username, 'Nombre de usuario' %>
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :email, 'Email' %>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password, 'Contraseña'%>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, 'Confirme Contraseña' %>
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p><%= f.submit (@user.new_record? ? "Registrarse" : "Update") %></p>
+    <div class="col-xs-3">
+      <p><%= f.label :username, 'Nombre de usuario' %>
+      <%= f.text_field :username, :class => 'form-control' %>
+    
+      <p><%= f.label :email, 'Email' %>
+      <%= f.text_field :email, :class => 'form-control' %>
+      
+      <p><%= f.label :password, 'Contraseña'%>
+      <%= f.password_field :password, :class => 'form-control' %>
+      
+      <p><%= f.label :password_confirmation, 'Confirme Contraseña' %>
+      <%= f.password_field :password_confirmation, :class => 'form-control' %>
+
+      <p><%= f.submit (@user.new_record? ? 'Registrarse' : 'Update'), :class => 'btn btn-lg btn-success' %></p>
+    </div>
 <% end %>
