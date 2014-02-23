@@ -1,16 +1,52 @@
-<h1>Trabajos/evaluaciones</h1>
+<h1>Trabajo/evaluacion</h1>
+<table class="table table-bordered">
+	<tr class="success" colspan=3>
+		<th>Nombre</th>
+		<th>Nota</th>
+		<th>Fecha</th>
+	</tr>
+	<tr class="warning">
+		<td><%= @work.name %></td>
+		<td><%= @work.nota_total %></td>
+		<td><%= @work.created_at.strftime("%d/%m/%Y") %></td>
+	</tr>
+</table>
+<h2>Presentaciones</h2>
+<table class="table table-bordered">
+	<tr class='success'>
+		<% @work.presentations.each do |presentation| %>
+  		<th><%= presentation.name %></th>
+  		<% end %>
+	</tr><tr class='success'>
+		<% @work.presentations.each do |presentation| %>
+  		<td><%= presentation.porcentaje_nota %></td>
+  		<% end %>
+	</tr><tr class='warning'>
+		<% @work.presentations.each do |presentation| %>
+  		<td><%= presentation.created_at.strftime("%d/%m/%Y") %></td>
+  		<% end %>
+	</tr><tr class='info'>
+		<% @work.presentations.each do |presentation| %>
+		<td><%= button_to 'Eliminar', [presentation.work, presentation],
+               method: :delete, :class => 'btn btn-danger' %></td>
+		<%end%>
+	</tr>
+</table>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @work.name %>
-</p>
- 
-<p>
-  <strong>Nota:</strong>
-  <%= @work.nota_total %>
-</p>
-
-<p>
-  <strong>Fecha:</strong>
-  <%= @work.created_at %>
-</p>
+<h4>Definir presentacion</h4>
+<%= form_for([@work, @work.presentations.build]) do |f| %>
+<table class="table table-bordered">
+	<tr class='success'><th>Nombre</th>
+		<td><%= f.text_field :name %></td>
+	</tr><tr class='success'>
+   		<th>Porcentaje/Nota</th>
+		<td><%= f.text_field :porcentaje_nota %></td>
+	</tr><tr class='warning'>
+   		<th>Nota</th>
+		<td><%= f.date_select :created_at %></td>	
+   	</tr><tr class='info'>
+   		<th></th>
+   		<td><%= f.submit 'Definir', :class => "btn btn-success" %></td>
+	</tr>
+</table>
+<%end%>

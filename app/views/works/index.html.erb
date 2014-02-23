@@ -1,20 +1,27 @@
 <h1>Trabajos/evaluaciones</h1>
-<table class="table table-bordered">
+<table class='table table-bordered'>
   <tr>
   <% @works.each do |work| %>
-    <th class="success"><%= work.name %></th>
+    <th class='success'><%= work.name %></th>
   <%end%>
   </tr><tr>
   <% @works.each do |work| %>
-    <th class="success"><%= work.nota_total %></th>
+    <th class='success'><%= work.nota_total %></th>
   <%end%>
   </tr><tr>
   <% @works.each do |work| %>
-    <td class="active"><%= work.nota %>0</td>
+    <td class='active'><%= work.nota %>0</td>
   <%end%>
   </tr><tr>
   <% @works.each do |work| %>
-    <td class="warning"><%= work.created_at.strftime("%d/%m/%Y")%><br><%= link_to 'Presentaciones', :controller => :works, :action => "index" %></td>
+    <td class='warning'><%= work.created_at.strftime("%d/%m/%Y")%><br></td>
+  <%end%>
+  </tr><tr>
+  <% @works.each do |work| %>
+  <td class='info'> <%= link_to 'Presentaciones', work_path(work) %>
+                    <%= link_to 'Modificar', edit_work_path(work), :class => 'btn btn-xs btn-warning' %>
+                    <%= link_to 'Elminar', work_path(work),
+                    method: :delete, :class => 'btn btn-xs btn-danger' %></td>
   <%end%>
 </tr>
 </table>

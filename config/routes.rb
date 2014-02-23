@@ -4,9 +4,12 @@ Miniproyecto::Application.routes.draw do
   get 'signup' => 'users#new', :as => :signup
   get 'logout' => 'sessions#destroy', :as => :logout
   get 'login' => 'sessions#new', :as => :login
-  resources :works
+
   resources :sessions
   resources :users
+  resources :works do
+    resources :presentations
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
