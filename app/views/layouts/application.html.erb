@@ -26,13 +26,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
           <ul class="nav navbar-nav">
             <% if current_user %>
-              <li class="active"><a href="/ads">Inicio</a></li>
               <% if current_user.rol == 'professor' %>
-                <li><a href="/evaluations/1">Evaluacion</a></li>
+                <li class="active"><a href="/evaluations/1">Evaluacion</a></li>
                 <li><a href="/evaluations">Estudiantes</a></li>
-                <li><a href="/ads/new">Anuncios</a></li>
+                <li><a href="/ads">Anuncios</a></li>
               <% else %>
-                <li><a href="/evaluations">Evaluacion</a></li>
+                <li class="active" ><a href="/evaluations">Evaluacion</a></li>
+                <li><a href="/ads">Anuncios</a></li>
               <%end%>
             <%end%>
           </ul>

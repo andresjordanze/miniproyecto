@@ -5,9 +5,12 @@ Miniproyecto::Application.routes.draw do
   get 'logout' => 'sessions#destroy', :as => :logout
   get 'login' => 'sessions#new', :as => :login
   get 'evaluations/add' => 'evaluations#add'
-  get 'evaluations/my' => 'evaluations#my'
+  get 'evaluations/add_work' => 'evaluations#add_work'
+  get 'evaluations/student_evaluation' => 'evaluations#student_evaluation'
+  get 'evaluations/student' => 'evaluations#student'
   resources :sessions
   resources :users
+  resources :ads
   resources :evaluations do
     resources :works
   end

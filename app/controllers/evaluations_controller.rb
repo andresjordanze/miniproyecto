@@ -21,6 +21,32 @@ class EvaluationsController < ApplicationController
 		redirect_to @evaluation
 	end
 
+	def add_work
+		@user = User.find(params[:user_id])
+		@existing_evaluation = Evaluation.find(1)
+		@evaluation = Evaluation.find(:all, :conditions => { :user_id => @user.id}).first
+		@evaluation.works.each do |w|
+			if w.nota == 0	
+				w.delete
+			end
+		end
+		@existing_evaluation.works.each do |work|
+			@work = @evaluation.works.create(work.attributes)
+			@work.evaluation_id = @evaluation.id
+		end
+		@evaluation.works.each do |w1|
+			if @evaluation.works.find(:all, :conditions => { :name => w1.name}).length > 1
+				@evaluation.works.find(:all, :conditions => { :name => w1.name}).last.delete
+			end
+		end
+		redirect_to :controller => 'evaluations', :action => 'student', :user_id => @user.id
+	end
+
+	def student
+		@user = User.find(params[:user_id])
+		@evaluation = Evaluation.find(:all, :conditions => { :user_id => @user.id}).first
+	end
+
 	def show
 		@evaluation = Evaluation.find(params[:id])
 	end

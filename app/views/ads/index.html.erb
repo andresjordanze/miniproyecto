@@ -1,0 +1,21 @@
+<h1>Anuncios</h1>
+ <% @ads.each do |ad| %>
+  <table class='table table-bordered'>
+    <tr class='danger'>
+      <th colspan=2><h2><%= ad.title %></th>
+    </tr><tr class='warning'>
+      <td><p><%= ad.text %></td>
+      <td><p><%= ad.created_at.strftime("%d/%m/%Y") %></td>
+    </tr>
+    <% if current_user.rol == 'professor' %>
+    <tr>
+      <td class='info' colspan=2>
+        <%= button_to 'Elminar', ad_path(ad), method: :delete, :class => 'btn btn-xs btn-danger' %>
+      </td>
+    </tr>
+    </table>
+    <%= link_to 'Publicar anuncio', new_ad_path %>
+    <%else%>
+    </table>
+    <%end%>
+<% end %>

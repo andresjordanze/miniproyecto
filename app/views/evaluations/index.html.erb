@@ -6,9 +6,10 @@
 	<% if user.rol == 'student'%>
     <tr class='info'>
     	<th><%= @num = @num + 1 %></th>
-    	<td><%= link_to user.username %></td>
-    	<% if @evaluations.find(:all, :conditions => { :user_id => user.id}).first == nil %>	
-    	<td><%= link_to 'Añadir evaluacion', :controller => :evaluations, :action => "add", :user_id => user.id  %></td>
+    	<td><%= link_to user.username, :controller => :evaluations, :action => 'student', :user_id => user.id %></td>
+    	<% if @evaluations.find(:all, :conditions => { :user_id => user.id}).first != nil  %>	
+    	<td><%= link_to 'Añadir evaluacion', :controller => :evaluations, :action => 'add', :user_id => user.id  %></td>
+    	<td><%= link_to 'Añadir trabajos', :controller => :evaluations, :action => 'add_work', :user_id => user.id  %></td>
     	<%else%>
     	<td>Quitar evaluacion</td></tr>
     	<%end%>

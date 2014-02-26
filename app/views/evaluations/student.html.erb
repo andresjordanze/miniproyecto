@@ -5,6 +5,9 @@
 		<% if @evaluation.gestion == 2 %>II/<%end%>
 		<%= @evaluation.created_at.strftime("%Y")%>
 	</h1>
+  <h2>
+    <%= @user.username %>
+  </h2>
 	<table class='table table-bordered'>
     <!--Fila 1/Nombres-->
     <tr>
@@ -23,16 +26,14 @@
       <th class='success'>50</th>
     </tr>
     <!--Fila 3/Nota-->
-    <% if current_user.rol == 'student' %>
-      <tr>
-        <% @evaluation.works.each do |work| %>
-          <td class='active'><%= work.nota %></td>
-          <% @evaluation.continuous_evaluation = @evaluation.continuous_evaluation + work.nota %>
-        <%end%>
-        <th class='active'><%= @evaluation.continuous_evaluation %></th>
-        <th class='active'><%= @evaluation.final_evaluation %></th>
-      </tr>
-    <%end%>
+    <tr>
+      <% @evaluation.works.each do |work| %>
+        <td class='active'><%= work.nota %></td>
+        <% @evaluation.continuous_evaluation = @evaluation.continuous_evaluation + work.nota %>
+      <%end%>
+      <th class='active'><%= @evaluation.continuous_evaluation %></th>
+      <th class='active'><%= @evaluation.final_evaluation %></th>
+    </tr>
     <!--Fila 4/Fecha-->
     <tr>
       <% @evaluation.works.each do |work| %>
@@ -44,25 +45,10 @@
       <tr>
         <% @evaluation.works.each do |work| %>
           <td class='info'>
-            <%= button_to 'Elminar', [work.evaluation, work], method: :delete, :class => 'btn btn-xs btn-danger' %>
+            <%= link_to 'Ingresar nota', edit_evaluation_work_path(@evaluation,work), :class => 'btn btn-xs btn-warning' %>
           </td>
         <%end%>
       </tr>
     <%end%>
   </table>
-  
-  <% if current_user.rol == 'professor' %>
-	  <h2>Registrar trabajo/evaluacion</h2>
-	  <%= form_for ([@evaluation, @evaluation.works.build]) do |f| %>
-      <div class="col-xs-4">
-        <p><%= f.label :name, 'Nombre' %>
-        <%= f.text_field :name, :class => 'form-control' %>
-        <p><%= f.label :nota_total %>
-        <%= f.text_field :nota_total, :class => 'form-control' %>
-        <p><%= f.label :created_at, 'Fecha' %>
-        <%= f.date_select :created_at %>
-        <p><%= f.submit 'Registrar', :class => 'btn btn-lg btn-success' %>
-      </div>
-    <% end %>
-  <%end%>
 </body>

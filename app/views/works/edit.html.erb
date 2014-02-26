@@ -1,12 +1,8 @@
-<h1>Modificar trabajo/evaluacion</h1>
-<%= form_for :work, url: works_path do |f| %>
+<h1>Ingresar nota</h1>
+<%= form_for ([@evaluation, @work]) do |f| %>
   <div class="col-xs-4">
-    <p><%= f.label :name, 'Nombre' %>
-    <%= f.text_field :name, :class => 'form-control' %>
-    <p><%= f.label :nota_total %>
-    <%= f.text_field :nota_total, :class => 'form-control' %>
-    <p><%= f.label :created_at, 'Fecha' %>
-    <%= f.date_select :created_at %>
-    <p><%= f.submit 'Editar', :class => 'btn btn-lg btn-success' %>
+    <p><%= f.label :nota %>
+    <%= f.text_field :nota, :class => 'form-control' %>
+    <p><%= f.submit 'Ingresar', :class => 'btn btn-lg btn-success' %>
   </div>
 <% end %>
