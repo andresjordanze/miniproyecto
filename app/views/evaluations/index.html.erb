@@ -1,0 +1,37 @@
+<% if current_user.rol == 'professor'%>
+<h1>Estudiantes</h1>
+<table class='table table-bordered'>
+<% @num = 0 %>
+<% @users.each do |user| %>
+	<% if user.rol == 'student'%>
+    <tr class='info'>
+    	<th><%= @num = @num + 1 %></th>
+    	<td><%= link_to user.username %></td>
+    	<% if @evaluations.find(:all, :conditions => { :user_id => user.id}).first == nil %>	
+    	<td><%= link_to 'Añadir evaluacion', :controller => :evaluations, :action => "add", :user_id => user.id  %></td>
+    	<%else%>
+    	<td>Quitar evaluacion</td></tr>
+    	<%end%>
+    <%end%>
+<%end%>
+</table>
+<%else%>
+	<% @evaluation = @evaluations.find(:all, :conditions => { :user_id => current_user.id}) %>
+	<% @evaluation = @evaluation.first %>
+	<h1>
+	Evaluacion
+		<% if @evaluation.gestion == 1 %>I/<%end%>
+		<% if @evaluation.gestion == 2 %>II/<%end%>
+		<%= @evaluation.created_at.strftime("%Y")%>
+	</h1>
+	<table>
+		<tr>
+			<th><p>Evaluacion continua</p></th>
+			<th><p>Evaluacion final</p></th>
+		</tr>
+		<tr>
+			<td><%= @evaluation.continuous_evaluation %></td>
+			<td><%= @evaluation.final_evaluation %></td>
+		</tr>
+	</table>
+<%end%>

@@ -1,0 +1,45 @@
+<body>
+	<h1>
+	Evaluacion
+		<% if @evaluation.gestion == 1 %>I/<%end%>
+		<% if @evaluation.gestion == 2 %>II/<%end%>
+		<%= @evaluation.created_at.strftime("%Y")%>
+	</h1>
+	<table class='table table-bordered'>
+  <tr>
+    <% @evaluation.works.each do |work| %>
+    <th class='success'><%= work.name %></th>
+    <%end%>
+    <th class='success'>Evaluacion continua</th>
+    <th class='success'>Evaluacion final</th>
+  </tr><tr>
+      <% @evaluation.works.each do |work| %>
+    <th class='success'><%= work.nota_total %></th>
+    <%end%>
+    <th class='success'>50</th>
+    <th class='success'>50</th>
+  </tr><tr>
+    <% @evaluation.works.each do |work| %>
+    <td class='active'><%= work.nota %></td>
+    <%end%>
+    <th class='active'><%= @evaluation.continuous_evaluation %></th>
+    <th class='active'><%= @evaluation.final_evaluation %></th>
+  </tr><tr>
+    <% @evaluation.works.each do |work| %>
+    <td class='warning'><%= work.created_at.strftime("%d/%m/%Y")%><br></td>
+    <%end%>
+  </tr>
+</table>
+	<h1>Registrar trabajo/evaluacion</h1>
+	<%= form_for ([@evaluation, @evaluation.works.build]) do |f| %>
+  <div class="col-xs-4">
+    <p><%= f.label :name, 'Nombre' %>
+    <%= f.text_field :name, :class => 'form-control' %>
+    <p><%= f.label :nota_total %>
+    <%= f.text_field :nota_total, :class => 'form-control' %>
+    <p><%= f.label :created_at, 'Fecha' %>
+    <%= f.date_select :created_at %>
+    <p><%= f.submit 'Registrar', :class => 'btn btn-lg btn-success' %>
+  </div>
+<% end %>
+</body>

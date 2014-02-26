@@ -25,8 +25,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/works">Trabajos/evaluaciones</a></li>
+            <% if current_user %>
+              <li class="active"><a href="/ads">Inicio</a></li>
+              <% if current_user.rol == 'professor' %>
+                <li><a href="/evaluations/1">Evaluacion</a></li>
+                <li><a href="/evaluations">Estudiantes</a></li>
+                <li><a href="/ads/new">Anuncios</a></li>
+              <% else %>
+                <li><a href="/evaluations">Evaluacion</a></li>
+              <%end%>
+            <%end%>
           </ul>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -41,6 +49,7 @@
               <%= link_to "Regístrate", signup_path %> o
               <%= link_to "Inicia sesión", login_path, :class => "btn btn-xs btn-info" %>
             <% end %></p>
+            </div>
           </div>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -58,7 +67,7 @@
   </body>
   <div id="footer">
     <div class="container">
-      <p class="muted credit">Designed by <a href="http://www.facebook.com/andres.jordan.zeballos"> Carlos Andres Jordan Zeballos</a>.</p>
+      <p class="muted credit">® Copyright 2014 por <a href="http://www.facebook.com/andres.jordan.zeballos"> Carlos Andres Jordan Zeballos</a>. Todos los derechos reservados.</p>
     </div>
   </div>
 </html>

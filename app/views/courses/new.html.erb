@@ -1,0 +1,11 @@
+<h1>Nuevo curso</h1>
+<%= form_for :course, url: courses_path do |f| %>
+	<div class="col-xs-4">
+    <p><%= f.label :name, 'Nombre' %><br>
+    <%= f.text_field :name, :class => 'form-control' %>
+    <p><%= f.label :gestion %><br>
+    <%= f.select :gestion, options_for_select([ 1, 2 ], 1) %>
+    <%= f.date_select :created_at, discard_month:true, discard_day:true, prompt: "Año" %><br><br>
+    <%= f.submit "Crear", :class => 'btn btn-lg btn-success' %>
+  	</div>
+<% end %>

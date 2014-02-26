@@ -11,24 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223143121) do
+ActiveRecord::Schema.define(version: 20140226032255) do
 
-  create_table "presentations", force: true do |t|
-    t.string   "name"
-    t.integer  "porcentaje_nota"
-    t.integer  "nota"
-    t.integer  "work_id"
+  create_table "evaluations", force: true do |t|
+    t.integer  "final_evaluation"
+    t.integer  "continuous_evaluation"
+    t.integer  "gestion"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "presentations", ["work_id"], name: "index_presentations_on_work_id"
 
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
+    t.string   "rol"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,8 +36,11 @@ ActiveRecord::Schema.define(version: 20140223143121) do
     t.string   "name"
     t.integer  "nota_total"
     t.integer  "nota"
+    t.integer  "evaluation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "works", ["evaluation_id"], name: "index_works_on_evaluation_id"
 
 end

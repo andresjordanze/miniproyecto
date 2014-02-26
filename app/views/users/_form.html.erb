@@ -1,8 +1,7 @@
-<body>
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
     <div class="col-xs-3">
-      <p><%= f.label :username, 'Nombre de usuario' %>
+      <p><%= f.label :username, 'Nombre completo' %>
       <%= f.text_field :username, :class => 'form-control' %>
     
       <p><%= f.label :email, 'Email' %>
@@ -14,7 +13,8 @@
       <p><%= f.label :password_confirmation, 'Confirme Contraseña' %>
       <%= f.password_field :password_confirmation, :class => 'form-control' %>
 
+      <p><%= f.label :rol %>
+        <%= f.select :rol, options_for_select([[ 'Docente', 'professor' ], ['Estudiante', 'student']], 'student') %>
       <p><%= f.submit (@user.new_record? ? 'Registrarse' : 'Update'), :class => 'btn btn-lg btn-success' %></p>
     </div>
 <% end %>
-</body>

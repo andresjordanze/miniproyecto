@@ -1,0 +1,8 @@
+<h1><%= @course.name %></h1>
+<p>
+	Gestion:
+	<%= @course.gestion.to_s + '/' + @course.created_at.strftime('%Y') %>
+</p>
+<p>
+	<%= link_to 'Registrar evaluacion continua', :controller => :work, :action => 'evaluation', :id => @course.id %>
+</p>

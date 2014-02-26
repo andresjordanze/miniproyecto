@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Miniproyecto::Application.config.secret_key_base = '94b474e0e3582ebe9aa49952ed9cbcd96d083bf91be365704cacc244e9274a1c73809d7e191098d2df09dad15c603318fb7596794c0461823bfd57ce232cf6d6'
+Miniproyecto::Application.config.secret_key_base = '42c14bf9910502fb72adb5409a0b8e0463fce2a85ed44f3105ea4b8b287406da684d2be5b9861c0078232e00f5da2eeef3a8c82e9ccc5ee676d18baf65b5e6e7'

@@ -1,12 +1,10 @@
-<h1>Trabajo/evaluacion</h1>
+<h1><%= @work.name %></h1>
 <table class="table table-bordered">
 	<tr class="success" colspan=3>
-		<th>Nombre</th>
 		<th>Nota</th>
 		<th>Fecha</th>
 	</tr>
 	<tr class="warning">
-		<td><%= @work.name %></td>
 		<td><%= @work.nota_total %></td>
 		<td><%= @work.created_at.strftime("%d/%m/%Y") %></td>
 	</tr>
@@ -46,7 +44,7 @@
 		<td><%= f.date_select :created_at %></td>	
    	</tr><tr class='info'>
    		<th></th>
-   		<td><%= f.submit 'Definir', :class => "btn btn-success" %></td>
+   		<td><%= f.submit 'Definir', :class => "btn btn-success",:course_id => @course.id %></td>
 	</tr>
 </table>
 <%end%>

@@ -1,28 +1,33 @@
-<h1>Trabajos/evaluaciones</h1>
+<h1>Evaluacion continua</h1>
 <table class='table table-bordered'>
   <tr>
-  <% @works.each do |work| %>
+    <% @works.each do |work| %>
     <th class='success'><%= work.name %></th>
-  <%end%>
+    <%end%>
+    <th class='success'>Total</th>
   </tr><tr>
-  <% @works.each do |work| %>
+    <% @works.each do |work| %>
     <th class='success'><%= work.nota_total %></th>
-  <%end%>
+    <%end%>
+    <th class='success'>50</th>
   </tr><tr>
-  <% @works.each do |work| %>
+    <% @works.each do |work| %>
     <td class='active'><%= work.nota %>0</td>
-  <%end%>
+    <%end%>
+    <th class='active'>0<% @works.each do |work| %>
+          <%= work.nota %>
+        <%end%></th>
   </tr><tr>
-  <% @works.each do |work| %>
+    <% @works.each do |work| %>
     <td class='warning'><%= work.created_at.strftime("%d/%m/%Y")%><br></td>
-  <%end%>
+    <%end%>
   </tr><tr>
-  <% @works.each do |work| %>
-  <td class='info'> <%= link_to 'Presentaciones', work_path(work) %>
-                    <%= link_to 'Modificar', edit_work_path(work), :class => 'btn btn-xs btn-warning' %>
-                    <%= link_to 'Elminar', work_path(work),
-                    method: :delete, :class => 'btn btn-xs btn-danger' %></td>
-  <%end%>
-</tr>
+    <% @works.each do |work| %>
+    <td class='info'> 
+      <%= link_to 'Presentaciones', work_path(work) %></br>
+      <%= link_to 'Modificar', edit_work_path(work) %>
+      <%= button_to 'Elminar', work_path(work), method: :delete, :class => 'btn btn-xs btn-danger' %></td>
+    <%end%>
+  </tr>
 </table>
 <%= link_to 'Registrar trabajo/evaluacion', new_work_path %>

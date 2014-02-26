@@ -1,0 +1,13 @@
+<body>
+<h1>Registrar evaluacion</h1>
+<%= form_for :evaluation, url: evaluations_path do |f| %>
+	<p>
+		<%= f.label :gestion %>
+       	<%= f.select :gestion, options_for_select([[ 'I', 1 ], ['II', 2]], 'student') %>
+       	<%= f.date_select :created_at, discard_day:true, discard_month:true %>
+    </p>
+  	<p>
+  		<%= f.submit 'Registrar', :class => 'btn btn-lg btn-success' %>
+  	</p>
+<% end %>
+</body>
